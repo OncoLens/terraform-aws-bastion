@@ -23,6 +23,8 @@ echo -e "\\nForceCommand /usr/bin/bastion/shell" >> /etc/ssh/sshd_config
 awk '!/X11Forwarding/' /etc/ssh/sshd_config > temp && mv temp /etc/ssh/sshd_config
 echo "X11Forwarding no" >> /etc/ssh/sshd_config
 
+echo "ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ct" >> /etc/ssh/sshd_config
+
 mkdir /usr/bin/bastion
 
 cat > /usr/bin/bastion/shell << 'EOF'
