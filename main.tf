@@ -206,6 +206,11 @@ resource "aws_launch_template" "bastion_launch_template" {
   monitoring {
     enabled = true
   }
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 2
+  }
   network_interfaces {
     associate_public_ip_address = var.associate_public_ip_address
     security_groups             = concat([local.security_group], var.bastion_additional_security_groups)
